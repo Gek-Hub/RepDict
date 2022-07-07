@@ -1,0 +1,453 @@
+@import "vars";
+@import "fonts";
+@import "~animate.css/source/animate.css";
+
+// -----------------------------------------------------------------------------
+// ---------------------------- Small UI components ------------------------------------
+// -----------------------------------------------------------------------------
+
+// Button
+.__btn{
+	height: 44px;
+	width: 120px;
+	background-color: transparent;
+	color: white;
+	font: 1.1em RobotoBold;
+	border: 3px solid $color-main;
+	border-radius: 40px;
+	@include trs();
+	&:hover{
+		border: 3px solid lighten($color-main, 10);
+		background-color: darken($color-main, 5);
+	}
+}
+
+// INPUT
+
+.__input.__input_default{
+	border: 2px solid $color-bg-ligth;
+	border-radius: 3px;
+	background-color: $color-bg-dark;
+	color: white;
+	font: 1em RobotoLight;
+	padding: 7px 5px;
+	outline: none;
+}
+
+// Editing text
+.edit_text{
+	margin-left: -5px;
+	span{
+		display: block;
+		width: 200px;
+		color: white;
+		line-height: 35px;
+		padding-left: 5px;
+		cursor: pointer;
+	}
+	input{
+		width: 200px;
+		height: 35px;
+		padding-left: 5px;
+		margin-left: -2px;
+		border-radius: 3px;
+		outline: none;
+		border: 2px solid $color-bg-dark;
+		background-color: $color-bg-dark;
+		color: white;
+	}
+}
+
+// -----------------------------------------------------------------------------
+// ---------------------------- Currsection ------------------------------------
+// -----------------------------------------------------------------------------
+
+
+
+section.lesson_section{
+	padding: 20px 50px;
+	.lesson_info_item{
+		color: $color-bg-grey;
+		font-family: RobotoLight;
+		margin-bottom: 10px;
+		&_value{
+			font-family: RobotoLightItalic;
+			padding-left: 5px;
+		}
+	}
+}
+.lesson_section.noactive{
+	display: none;
+}
+
+
+// -----------------------------------------------------------------------------
+// ------------------------------- Header --------------------------------------
+// -----------------------------------------------------------------------------
+
+header.main_header {
+	padding: 25px 50px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	.logo {
+		&_text {
+			a {
+				font-family: RobotoBlack;
+				color: white;
+				text-decoration: none;
+			}
+		}
+			
+	}
+	.menu {
+		
+		.icon_bars{
+			display: none;
+			color: white;
+			font-size: 1.6em;
+			cursor: pointer;
+		}
+		&_list {
+			display: flex;
+			flex-direction: row;
+			margin-bottom: 0;
+			align-items: center;
+			&_item {
+				margin-right: 25px;
+				font-family: RobotoLight;
+				&_link {
+					font-family: RobotoLight;
+					color: rgb(231, 231, 231);
+					text-decoration: none;
+					transition: all .2s ease-in-out;
+					padding: 2px 0;
+					border-bottom: 2px solid rgba(0, 0, 0, 0);
+					svg{
+						margin-right: 5px;
+						transition: all .2s ease-in-out;
+					}
+					&:hover {
+						border-bottom: 2px solid $color-main;
+						svg{
+							color: $color-main;
+						}
+					}
+				}
+			}
+			
+			.active{
+				a{
+					border-bottom: 2px solid $color-main;
+				}
+				svg{
+					color: $color-main;
+				}
+			}
+			.user_panel{
+				position: relative;
+				margin-left: 20px;
+				&_head{
+					cursor: pointer;
+					font-family: RobotoRegular;
+					svg{
+						margin-right: 5px;
+					}
+				}
+				.dropdown{
+					position: absolute;
+					right: 0;
+					top: 35px;
+					background-color: $color-bg-ligth;
+					padding: 5px 0;
+					z-index: 20;
+					// min-width: 100px;
+					height: auto;
+					border-radius: 5px;
+					// animation: 0.2s ease-in-out 0s alternate fadeIn;
+					@include bs(15px, 0px, rgb(15, 15, 15));
+					&_item{
+						// text-align: center;
+						// padding: 5px 0px;
+						a{
+							width: 100%;
+							height: 100%;
+							display: block;
+							text-decoration: none;
+							font-family: RobotoLight;
+							padding: 5px 20px;
+							color: white;
+							transition: all .1s ease-in-out;
+							
+							&:hover{
+								background-color: $color-accent;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.user__balance{
+	padding: 5px 7px;
+	background-color: $color-accent;
+	border-radius: 30px;
+}
+// Notification
+
+.Notification{
+	position: fixed;
+	z-index: 999;
+	bottom: 25px;
+	right: 15px;
+	padding: 10px 25px;
+	border-radius: 3px;
+	@include bs(13px, 2px, rgba(73, 73, 73, 0.349));
+	.Notification_wrapper_content{
+		position: relative;
+		.close{
+			position: absolute;
+			top: -5px;
+			right: -20px;
+			color: white;
+			cursor: pointer;
+		}
+		.head{
+			font-size: 1.4em;
+			font-family: RobotoBold;
+			color: white;
+		}
+	
+		.content{
+			font: 1em RobotoLight;
+			color: white;
+		}
+	}
+}
+
+.Notification.notify_success{
+	background-color: green !important;
+	@include fadeInDown(.2s);
+}
+.Notification.notify_error{
+	background-color: rgb(167, 24, 24) !important;
+	@include fadeInDown(.2s);
+}
+.Notification.notify_warning{
+	background-color: rgb(190, 207, 33) !important;
+	@include fadeInDown(.2s);
+}
+
+
+// Popup
+
+.Popup__wrapper{
+	position: fixed;
+	z-index: 999;
+	width: calc(100vw - 20px);
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.719);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: 0;
+	overflow: hidden;
+	.Popup{
+		width: 40%;
+		height: 35%;
+		min-width: 350px;
+		min-height: 200px;
+		background-color: darken($color-main, 3%);
+		border-radius: 10px;
+		color: white;
+		position: relative;
+		padding: 20px 30px;
+		.close_button{
+			position: absolute;
+			right: 10px;
+			top: 5px;
+			cursor: pointer;
+		}
+		.head{
+			font: 1.2em RobotoBold;
+			margin-bottom: 20px;
+			color: white;
+		}
+		.content{
+			font: 1em RobotoLight;
+			color: white;
+		}
+		.control_botton{
+			position: absolute;
+			bottom: 20px;
+			width: calc(100% - 60px);
+			.Popup_confirm{
+				display: flex;
+				justify-content: flex-end;
+				gap: 10px;
+			}
+		}
+	}
+	&.body__hidden{
+		overflow-y: hidden;
+	}
+}
+.Popup__wrapper.noactive{
+	display: none;
+}
+
+// PRELOADER
+.loader__wrapper{
+	width: calc(100% - 20px);
+	// height: 100vh;
+	height: 100%;
+	position: fixed;
+	z-index: 999;
+	top: 0;
+
+	background-color: $color-bg-dark;
+	.loader {
+		position: absolute;
+		top: calc(50% - 2.5em);
+		left: calc(50% - 2.5em);
+		width: 2.5em;
+		height: 2.5em;
+		border: 0.25em solid $color-accent;
+		border-left: 0.2em solid $color-bg-dark;
+		border-radius: 50%;
+		animation: load8 0.7s infinite linear;
+		transition: opacity 0.3s;
+	}
+	 
+	&--hide {
+		opacity: 0;
+		display: none;
+	}
+	
+	@keyframes load8 {
+		0% {
+			transform: rotate(0deg);
+		}
+		// 25%{
+		// 	transform: rotate(110deg)
+		// }
+		50%{
+			transform: rotate(190deg)
+		}
+		// 75%{
+		// 	transform: rotate(300deg)
+		// }
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+}
+
+
+.hint{
+	position: absolute;
+	top: 50px;
+	right: 10px;
+	background-color: lighten($color-bg-dark, 0);
+	padding: 5px 7px;
+}
+
+.hint.noactive{
+	display: none;
+}
+.hint.active{
+	display: block;
+}
+
+#root{
+	position: relative;
+	padding-bottom: 100px;
+	min-height: 100vh;
+}
+
+footer{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	// margin-top: 20px;
+	.wrap_content{
+		color: white;
+		display: flex;
+		justify-content: space-around;
+		background-color: $color-bg-ligth;
+		font: 1em RobotoLight;
+		padding: 20px 0;
+		.center{
+			font-family: RobotoBold;
+		}
+		.front, .back{
+			color: rgb(112, 112, 112);
+			a{
+				color: rgb(112, 112, 112);
+				text-decoration: none;
+				@include trs();
+				&:hover{
+					text-decoration: underline;
+					color: rgb(144, 144, 144);
+				}
+			}
+		}
+	}
+}
+
+
+// -----------------------------------------------------------------------------
+// ----------------------------- Pagination ------------------------------------
+// -----------------------------------------------------------------------------
+
+.pagination{
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: end;
+	.pagination_select_count_pages{
+		background-color: $color-bg-dark;
+		color: rgb(160, 160, 160);
+		border: 2px solid lighten($color-bg-dark, 10);
+		border-radius: 3px;
+		min-width: 200px;
+		height: 40px;
+		outline: none;
+		padding: 0 10px;
+	}
+	.pagination_pages_buttons{
+		// background-color: red;
+		display: flex;
+		margin: 0;
+		padding: 0;
+		li{
+			margin: 0 3px;
+			a{
+				padding: 5px 10px;
+				color: rgb(211, 211, 211);
+				font-family: RobotoBold;
+				border-radius: 3px;
+			}
+		}
+		li.previous, li.next{
+			// padding: 5px 7px;
+			a{
+				// display: flex;
+				// align-items: center;
+				// // line-height: 1.5em;
+				svg{
+					margin-top: -5px;
+				}
+			}
+		}
+		li.active{
+			a{
+				background-color: $color-main;
+				color: white;
+			}
+		}
+	}
+}
